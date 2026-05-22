@@ -1,0 +1,415 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* --- 1. RESET & BASE STYLES --- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #f8fafc;
+  /* Professional light gray-blue background */
+  color: #1a252f;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* --- 2. MAIN LAYOUT CONTAINER (Scroll Lock) --- */
+.app-container {
+  display: flex;
+  height: 100vh;
+  /* Forces app to take exactly 100% of viewport */
+  width: 100vw;
+  overflow: hidden;
+  /* Prevents double scrollbars */
+}
+
+/* --- 3. SIDEBAR STYLES --- */
+/* --- 3. SIDEBAR STYLES --- */
+.sidebar {
+  width: 280px;
+  background: #ebf2e9;
+  color: #1a252f;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  height: 100vh;
+  overflow-y: auto;
+  transition: transform 0.3s ease;
+  z-index: 1000;
+  border-right: 1px solid #e2e8f0;
+}
+
+.sidebar.collapsed {
+  transform: translateX(-100%);
+}
+
+/* Sidebar Header & Logo */
+.sidebar-header {
+  margin-bottom: 40px;
+  display: flex;
+  align-items: center;
+  padding: 0;
+  gap: 12px;
+  padding: 0;
+  justify-content: flex-start;
+}
+
+
+.app-title {
+  margin: 0;
+  padding: 0;
+}
+
+.logo-icon {
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(135deg, #165d3c 0%, #bdf59a 100%);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: white;
+  box-shadow: 0 4px 12px rgba(22, 93, 60, 0.2);
+}
+
+.logo-icon svg {
+  font-size: 14px;
+}
+
+.app-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1a252f;
+  letter-spacing: -0.5px;
+}
+
+/* Navigation Items */
+.nav-section {
+  flex: 1;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  /* CHANGE 1: Reduce gap here to tighten space between icon wrapper and text */
+  gap: 6px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-bottom: 4px;
+  color: #5a6c7d;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.nav-item:hover {
+  background: white;
+  color: #165d3c;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  transform: translateX(4px);
+}
+
+.nav-item.active {
+  background: white;
+  color: #165d3c;
+  box-shadow: 0 4px 12px rgba(22, 93, 60, 0.08);
+  font-weight: 600;
+}
+
+.icon-wrapper {
+  display: flex;
+  align-items: center;
+  /* CHANGE 2: Align icon to start so it sits flush left inside the 20px box */
+  justify-content: center;
+  font-size: 16px;
+  width: 20px;
+  /* Keeps vertical alignment straight */
+}
+
+.nav-badge {
+  background: #ef4444;
+  color: white;
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: 10px;
+  margin-left: auto;
+  font-weight: 700;
+  box-shadow: 0 2px 4px rgba(239, 68, 68, 0.2);
+}
+
+/* User Profile (Bottom of Sidebar) */
+.user-profile {
+  margin-top: auto;
+  padding: 16px;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+}
+
+.user-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #dcfce7;
+  color: #165d3c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-name {
+  color: #1a252f;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.user-role {
+  color: #64748b;
+  font-size: 12px;
+}
+
+/* --- 4. MAIN CONTENT AREA --- */
+.main-content {
+  flex: 1;
+  margin-left: 280px;
+  /* Width of Sidebar */
+  transition: margin-left 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+  /* Prevents whole wrapper from scrolling */
+  background-color: #f8fafc;
+}
+
+.main-content.expanded {
+  margin-left: 0;
+}
+
+/* --- 5. TOP BAR (Fixed Header) --- */
+.top-bar {
+  height: 80px;
+  /* Standard Professional Height */
+  min-height: 80px;
+  background: white;
+  border-bottom: 1px solid #e2e8f0;
+  padding: 0 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+  z-index: 10;
+}
+
+.menu-toggle {
+  display: none;
+  /* Hidden on desktop */
+  background: transparent;
+  border: 1px solid #e2e8f0;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #64748b;
+  font-size: 18px;
+}
+
+.search-bar {
+  background: white;
+  padding: 10px 16px;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 320px;
+  transition: all 0.2s;
+  color: #94a3b8;
+  position: relative;
+}
+
+.search-bar:focus-within {
+  border-color: #165d3c;
+  box-shadow: 0 0 0 3px rgba(22, 93, 60, 0.1);
+  color: #165d3c;
+}
+
+.search-input {
+  border: none;
+  outline: none;
+  width: 100%;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: #1a252f;
+}
+
+.search-input::placeholder {
+  color: #94a3b8;
+}
+
+.top-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.action-icon-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: white;
+  border: 1px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  color: #64748b;
+  font-size: 18px;
+}
+
+.action-icon-btn:hover {
+  transform: translateY(-2px);
+  border-color: #bdf59a;
+  color: #165d3c;
+  box-shadow: 0 4px 12px rgba(22, 93, 60, 0.1);
+}
+
+.notification-dot {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  width: 8px;
+  height: 8px;
+  background: #ef4444;
+  border-radius: 50%;
+  border: 2px solid white;
+}
+
+/* --- 6. DYNAMIC CONTENT WRAPPER (The Scrollable Part) --- */
+.content-wrapper {
+  flex: 1;
+  /* Fills remaining space */
+  overflow-y: auto;
+  /* Enables Scrolling */
+  padding: 32px;
+  /* Standard Professional Padding */
+  scroll-behavior: smooth;
+}
+
+/* Custom Scrollbar for Webkit (Chrome/Safari) */
+.content-wrapper::-webkit-scrollbar {
+  width: 8px;
+}
+
+.content-wrapper::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.content-wrapper::-webkit-scrollbar-thumb {
+  background-color: #cbd5e1;
+  border-radius: 4px;
+}
+
+.content-wrapper::-webkit-scrollbar-thumb:hover {
+  background-color: #94a3b8;
+}
+
+/* --- 7. MOBILE RESPONSIVENESS --- */
+@media (max-width: 1024px) {
+  .sidebar {
+    transform: translateX(-100%);
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.1);
+  }
+
+  .sidebar.visible {
+    transform: translateX(0);
+  }
+
+  .main-content {
+    margin-left: 0;
+  }
+
+  .menu-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .top-bar {
+    padding: 0 20px;
+  }
+
+  .content-wrapper {
+    padding: 20px;
+  }
+
+  .search-bar {
+    width: 200px;
+  }
+}
+
+@media (max-width: 768px) {
+  .search-bar {
+    display: none;
+    /* Hide search on small mobile */
+  }
+
+  .top-actions {
+    margin-left: auto;
+  }
+}
+
+/* Search Dropdown */
+.search-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  margin-top: 8px;
+  z-index: 1000;
+  overflow: hidden;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.search-dropdown-item {
+  padding: 10px 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.1s;
+  color: #1a252f;
+  font-size: 14px;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.search-dropdown-item:last-child {
+  border-bottom: none;
+}
+
+.search-dropdown-item:hover {
+  background: #f0fdf4;
+  color: #165d3c;
+  font-weight: 500;
+}

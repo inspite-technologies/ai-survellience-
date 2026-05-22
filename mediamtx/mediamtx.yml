@@ -1,0 +1,45 @@
+###############################################
+# MediaMTX Configuration – FaceScan WebRTC
+###############################################
+
+# General
+logLevel: info
+logDestinations: [stdout]
+
+###############################################
+# RTSP Server
+###############################################
+rtsp: yes
+rtspTransports: [tcp]
+rtspAddress: :8554
+
+###############################################
+# WebRTC Server
+###############################################
+webrtc: yes
+webrtcAddress: :8889
+webrtcLocalUDPAddress: :8189
+webrtcAllowOrigins: ['*']
+webrtcICEServers2:
+  - url: stun:stun.l.google.com:19302
+
+###############################################
+# Disable unused protocols
+###############################################
+hls: no
+rtmp: no
+srt: no
+
+###############################################
+# Paths – Camera Streams
+###############################################
+paths:
+  cam-in:
+    source: rtsp://admin:qwerty%409544@192.168.1.2:554/cam/realmonitor?channel=2&subtype=0
+    rtspTransport: tcp
+    sourceOnDemand: yes
+
+  cam-out:
+    source: rtsp://admin:qwerty%409544@192.168.1.2:554/cam/realmonitor?channel=1&subtype=0
+    rtspTransport: tcp
+    sourceOnDemand: yes

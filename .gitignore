@@ -1,0 +1,63 @@
+# Dependency directories
+node_modules/
+**/node_modules/
+
+# Local databases and data caches
+mongodb-data/
+data/faiss/face_index.faiss
+data/faiss/id_map.pkl
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+.env.production
+.env.development
+**/.env
+**/.env.local
+**/.env.*.local
+**/.env.production
+**/.env.development
+
+# Secrets and Keys
+server/config/serviceAccountKey.json
+**/serviceAccountKey.json
+*.pem
+*.key
+
+# Production / build outputs
+dist/
+dist-ssr/
+build/
+**/dist/
+**/build/
+face-engine/build/
+face-engine/dist/
+
+# OS-generated files
+.DS_Store
+.DS_Store?
+**/.DS_Store
+Thumbs.db
+
+# IDEs and editors
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Temporary/Cache folders
+.cache/
+.npm/
+.eslintcache
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+lerna-debug.log*

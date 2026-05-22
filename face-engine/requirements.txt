@@ -1,0 +1,16 @@
+--extra-index-url https://download.pytorch.org/whl/cpu
+fastapi
+uvicorn[standard]
+insightface
+faiss-cpu
+pymongo
+numpy<2.0
+opencv-python<4.11
+python-dotenv
+pydantic
+onnxruntime
+ultralytics==8.2.103
+torch==2.3.1
+deep-sort-realtime
+python-multipart
+redis

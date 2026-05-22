@@ -1,0 +1,175 @@
+/* Leave Controls Container */
+.leave-controls {
+    margin-bottom: 24px;
+    display: flex;
+    justify-content: center;
+}
+
+.view-toggle-leave {
+    background: #f1f5f9;
+    padding: 6px;
+    border-radius: 12px;
+    display: inline-flex;
+    gap: 8px;
+    border: 1px solid #e2e8f0;
+}
+
+.view-btn-leave {
+    padding: 8px 20px;
+    border: none;
+    background: transparent;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #64748b;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: capitalize;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.view-btn-leave:hover {
+    background: rgba(255, 255, 255, 0.6);
+    color: #334155;
+}
+
+.view-btn-leave.active {
+    background: white;
+    color: #0f172a;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Specific Active Colors */
+.leave-controls button:nth-child(1).active {
+    /* Pending */
+    color: #f59e0b;
+    border-bottom: 2px solid #f59e0b;
+}
+
+.leave-controls button:nth-child(2).active {
+    /* Approved */
+    color: #10b981;
+    border-bottom: 2px solid #10b981;
+}
+
+.leave-controls button:nth-child(3).active {
+    /* Rejected */
+    color: #ef4444;
+    border-bottom: 2px solid #ef4444;
+}
+
+.leave-controls button:nth-child(4).active {
+    /* All */
+    color: #3b82f6;
+    border-bottom: 2px solid #3b82f6;
+}
+
+
+/* ... existing styles ... */
+
+/* FORCE ONE ROW layout for button container */
+.admin-view .action-buttons {
+    display: flex;
+    flex-direction: row;
+    /* Forces horizontal layout */
+    justify-content: flex-end;
+    /* Aligns to the right */
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    flex-wrap: nowrap;
+    /* Prevents wrapping to next line */
+}
+
+/* Button styles */
+.admin-view .action-btn {
+    padding: 6px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    /* Keeps icon and text inline */
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    white-space: nowrap;
+    /* Prevents text from breaking lines */
+    min-width: 80px;
+    /* Optional: Ensures buttons don't get too squashed */
+}
+
+.admin-view .action-btn.approve {
+    background-color: #2e7d32;
+    color: white;
+}
+
+.admin-view .action-btn.reject {
+    background-color: #c62828;
+    color: white;
+}
+
+/* Department Tabs Styling */
+.department-tabs {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+.dept-tab {
+    padding: 12px 24px;
+    background: none;
+    border: none;
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    color: #666;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.dept-tab:hover {
+    color: #1976d2;
+    background-color: #f5f5f5;
+}
+
+.dept-tab.active {
+    color: #1976d2;
+    border-bottom-color: #1976d2;
+}
+
+.tab-count {
+    background-color: #ff9800;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: bold;
+    min-width: 20px;
+    text-align: center;
+}
+
+.dept-tab.active .tab-count {
+    background-color: #1976d2;
+}
+
+/* Approval Info for processed requests */
+.approval-info {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid #e0e0e0;
+    color: #666;
+    font-size: 13px;
+}
+
+.approval-info i {
+    margin-right: 6px;
+    color: #4caf50;
+}
